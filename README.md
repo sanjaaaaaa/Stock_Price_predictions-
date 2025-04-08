@@ -1,4 +1,4 @@
-# Stock_Price_predictions-
+# Stock_Price_Predictions-
 We use the yfinance library to fetch historical stock data like closing prices.
 This data is preprocessed and used to train predictive models such as LSTM (a deep learning model).
 By analyzing past trends and patterns, the model forecasts future stock prices.
