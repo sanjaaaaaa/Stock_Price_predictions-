@@ -1,0 +1,100 @@
+1. Prerequisites
+    Make sure the following are installed:
+    Python 3.8+/3.11.9 → https://www.python.org/downloads/
+    VS Code → https://code.visualstudio.com/
+    pip (comes with Python)
+
+2. Create Project Folder and Add Files
+    Create a folder named (for example): StockPredictor
+    Place the following files inside this folder:
+        train_model.py
+        app.py
+        test.py
+        Stock_Predictor.keras (this is your trained model file)
+
+    Final folder structure should look like:
+        StockPredictor/
+        ├── app.py
+        ├── test.py
+        ├── train_model.py
+        └── Stock_Predictor.keras
+3. Open Folder in VS Code
+    Launch VS Code
+    Click on File > Open Folder
+    Select your StockPredictor folder
+
+4. Set Up Virtual Environment (Optional but Recommended)
+    Open VS Code terminal (press Ctrl + ` or go to View > Terminal) and run:
+        python -m venv venv
+    Activate the virtual environment:
+    On Windows:
+        .\venv\Scripts\activate
+    On macOS/Linux:
+        source venv/bin/activate
+
+5. Install Required Python Libraries
+    In the terminal, run:
+        pip install numpy pandas yfinance scikit-learn matplotlib streamlit tensorflow
+    You can also create a requirements.txt file and run:
+        pip install -r requirements.txt
+
+6. Train the Model
+    If you want to re-train the model yourself, run:
+        python train_model.py
+
+    This script will:
+        Download stock data for AAPL
+        Train an LSTM model
+        Save the model as Stock_Predictor.keras
+
+7. Run the Streamlit App
+    To launch the full app with prediction and graphs:
+        streamlit run app.py
+    This will open your browser and show the stock prediction dashboard.
+
+8. Run the Test Version (Optional)
+    To test a basic version of the Streamlit app:
+        streamlit run test.py
+    This version just downloads and displays stock data for a selected company.
+
+9. IMPORTANT: Check Model Path in app.py
+    Inside app.py, make sure the model is loaded like this:
+        model = load_model("Stock_Predictor.keras")
+
+Finally
+Now you're ready to:
+    Train your own model
+    Run predictions
+    View everything in a nice interactive web UI
+
+Output:
+1.After running:
+    You will see messages in the terminal like:
+    kotlin
+        Downloading stock data...
+        Building model...
+        Training model (this may take a minute)...
+        ✅ Model saved as 'Stock_Predictor.keras'
+A file named Stock_Predictor.keras is created/updated in your folder
+
+2.app.py
+    Command to run:
+        streamlit run app.py
+    What this file does:
+        Launches a Streamlit web app in your browser
+        Lets you enter a stock symbol (e.g., AAPL, GOOG, MSFT)
+        Downloads stock price data using yfinance
+    Plots:
+        Price vs. Moving Average (MA50, MA100, MA200)
+        Actual vs. Predicted stock price using the trained model
+        Uses the model (Stock_Predictor.keras) to predict future prices based on historical data
+
+After running:
+A browser window/tab opens showing the app interface
+You'll see:
+    A title: 📈 Stock Market Predictor
+    An input box to enter a stock symbol
+Graphs like:
+    Raw stock data
+    Price vs MA50 / MA100 / MA200
+    Original vs Predicted price comparison
