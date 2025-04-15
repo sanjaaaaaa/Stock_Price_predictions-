@@ -5,17 +5,20 @@ from tensorflow.keras.models import load_model
 import streamlit as st
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import MinMaxScaler
+from datetime import date
+import warnings
 
 # Load trained model
-model = load_model("C:\\Python\\Stock\\Stock_Predictor.keras")
+model = load_model("Stock_Predictor.keras")
 
 # Streamlit UI
 st.header('📈 Stock Market Predictor')
 
 # User input
-stock = st.text_input('Enter Stock Symbol (e.g., AAPL, GOOG, MSFT)', 'GOOG')
+
+stock = st.text_input('Enter Stock Symbol (e.g., AAPL, GOOG, MSFT , NFLX , NVDA , TSLA , META ,ORCL)', 'GOOG')
 start = '2012-01-01'
-end = '2022-12-31'
+end = date.today().strftime('%Y-%m-%d')
 
 # Fetch data
 data = yf.download(stock, start, end)
